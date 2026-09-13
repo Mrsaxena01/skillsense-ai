@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+
+:root {
+    --ink: #182630;
+    --muted: #879394;
+    --line: #e4e8e5;
+    --lime: #d4f35b;
+    --app-font: 'Roboto Condensed', sans-serif;
+    --sb-track: #f1f1f1;
+    --sb-thumb: #888888;
+    --sb-hover: #555555;
+    --sb-active: #333333;
+}
+
+* {
+    user-select: none;
+    font-family: var(--app-font);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sb-thumb) var(--sb-track);
+    font-family: var(--app-font);
+    letter-spacing: 0.5px;
+
+}
+
+.profile-page-header .ant-typography,.fontApply,
+.profile-page-header button {
+    font-family: var(--app-font) !important;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sb-track);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb);
+    border-radius: 8px;
+    border: 2px solid var(--sb-track);
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--sb-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--sb-active);
+}
+
+.toast {
+    position: fixed;
+    top: 24px;        
+    right: 24px;
+    background: var(--ink, #182630);
+    color: #e7f2dc;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font-size: 13px;   
+    font-weight: 500;
+    z-index: 99999;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.12);
+ 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+   
+    animation: toastSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+}
+
+/* Hardware-accelerated sliding smooth animation transitions */
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95); /* Slides cleanly from above */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+.auth-container{
+    align-items: stretch;
+}
+
+.auth-left {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://etimg.etb2bimg.com/thumb/msid-118121006,width-1200,height-900,resizemode-4/.jpg')
+            no-repeat center center;
+    background-size: cover;
+    background-position: center;
+}
+
+.ai-powered {
+    border: 2px solid var(--lime);
+    padding: 4px 10px;
+    border-radius: 40px;
+    background: var(--lime);
+    color: var(--ink);
+    font-size: 11px;
+}

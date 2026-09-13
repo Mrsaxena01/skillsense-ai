@@ -1,0 +1,133 @@
+
+export const employeeCompetencies = [
+    {
+        id: 'COMP001',
+        name: 'Survey Methodology',
+        domain: 'Statistical',
+        currentLevel: 4,
+        requiredLevel: 4,
+        assessmentScore: 86,
+        lastAssessedAt: '2026-08-12',
+        evidence: [
+            'Completed Official Statistics training (NSSTA)',
+            'Completed Survey Methodology training (NSSTA)',
+            'Previous assessment: 86%',
+        ],
+        missingCapabilities: [],
+        recommendedNextStep: null,
+    },
+    {
+        id: 'COMP002',
+        name: 'Sampling',
+        domain: 'Statistical',
+        currentLevel: 3,
+        requiredLevel: 4,
+        assessmentScore: 72,
+        lastAssessedAt: '2026-08-10',
+        evidence: [
+            'Previous assessment: 72%',
+            'On-the-job experience: National Sample Survey',
+        ],
+        missingCapabilities: [
+            'Advanced stratified sampling design',
+            'Non-response adjustment techniques',
+        ],
+        recommendedNextStep: 'Advanced Sampling Techniques (iGOT)',
+    },
+    {
+        id: 'COMP003',
+        name: 'Python',
+        domain: 'Technical',
+        currentLevel: 3,
+        requiredLevel: 4,
+        assessmentScore: 68,
+        lastAssessedAt: '2026-08-08',
+        evidence: [
+            'Completed Python Fundamentals',
+            'Data analysis project',
+            'Previous assessment: 68%',
+        ],
+        missingCapabilities: [
+            'Advanced Python programming',
+            'Statistical Python libraries',
+            'Production data pipelines',
+        ],
+        recommendedNextStep: 'Python for Data Analysis (iGOT)',
+    },
+    {
+        id: 'COMP004',
+        name: 'Data Visualization',
+        domain: 'Technical',
+        currentLevel: 4,
+        requiredLevel: 4,
+        assessmentScore: 88,
+        lastAssessedAt: '2026-08-05',
+        evidence: [
+            'Completed Data Visualization training (MoSPI)',
+            'Previous assessment: 88%',
+        ],
+        missingCapabilities: [],
+        recommendedNextStep: null,
+    },
+    {
+        id: 'COMP005',
+        name: 'AI / Machine Learning',
+        domain: 'Technical',
+        currentLevel: 1,
+        requiredLevel: 3,
+        assessmentScore: 42,
+        lastAssessedAt: '2026-08-01',
+        evidence: [
+            'Self-declared interest in profile',
+            'No formal training yet',
+        ],
+        missingCapabilities: [
+            'ML fundamentals',
+            'Model evaluation basics',
+            'Applied AI for statistics',
+        ],
+        recommendedNextStep: 'AI for Official Statistics (iGOT)',
+    },
+    {
+        id: 'COMP006',
+        name: 'Data Privacy',
+        domain: 'Digital Governance',
+        currentLevel: 2,
+        requiredLevel: 3,
+        assessmentScore: 58,
+        lastAssessedAt: '2026-07-28',
+        evidence: ['Basic orientation completed'],
+        missingCapabilities: [
+            'Data protection frameworks',
+            'Government data-sharing protocols',
+        ],
+        recommendedNextStep: 'Data Privacy Essentials (iGOT)',
+    },
+    {
+        id: 'COMP007',
+        name: 'Communication',
+        domain: 'Behavioural & Managerial',
+        currentLevel: 4,
+        requiredLevel: 3,
+        assessmentScore: 90,
+        lastAssessedAt: '2026-07-20',
+        evidence: ['Consistently rated well in peer reviews'],
+        missingCapabilities: [],
+        recommendedNextStep: null,
+    },
+];
+
+export const competencyLevelLabels = {
+    1: 'Beginner',
+    2: 'Basic',
+    3: 'Intermediate',
+    4: 'Advanced',
+    5: 'Expert',
+};
+
+export const competencyDomains = [
+    'Statistical',
+    'Technical',
+    'Digital Governance',
+    'Behavioural & Managerial',
+];
