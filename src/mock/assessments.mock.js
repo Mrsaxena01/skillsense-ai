@@ -60,5 +60,39 @@ export const sampleGeneratedQuiz = {
             explanation:
                 "NumPy's ndarray is built for efficient numerical/array computation.",
         },
+        {
+            id: 'Q3',
+            prompt: 'Which Pandas method is used to fill missing (NaN) values with a specified fallback value?',
+            options: [
+                'fillna()',
+                'drop_na()',
+                'replace_na()',
+                'fill_missing()',
+            ],
+            correctIndex: 0,
+            explanation:
+                'df.fillna() is the standard Pandas method used to replace missing or null values in a DataFrame or Series.',
+        },
+        {
+            id: 'Q4',
+            prompt: 'In a 2D NumPy array, what does the operation np.sum(arr, axis=0) compute?',
+            options: [
+                'The sum across each individual row horizontally',
+                'The sum vertically down each individual column',
+                'The total sum of all elements in the entire array',
+                'The average value of the entire array',
+            ],
+            correctIndex: 1,
+            explanation:
+                'Setting axis=0 tells NumPy to collapse the row dimension, thereby summing down each column.',
+        },
+        {
+            id: 'Q5',
+            prompt: 'Which Pandas function allows you to apply multiple aggregation operations (like mean, sum, max) to a grouped DataFrame?',
+            options: ['combine()', 'summarize()', 'agg()', 'eval()'],
+            correctIndex: 2,
+            explanation:
+                'The .agg() (or .aggregate()) method lets you pass a list or dictionary of aggregation functions to execute on a GroupBy object.',
+        },
     ],
 };

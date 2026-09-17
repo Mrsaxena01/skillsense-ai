@@ -99,7 +99,7 @@ const Login = () => {
                     </div>
 
                     <h2 className="text-2xl font-bold text-gray-900 text-center md:text-left">
-                        Sign in to NitiSetu
+                        Sign in to SkillSense AI
                     </h2>
                     <p className="mb-6 mt-1 text-sm text-gray-500 text-center md:text-left">
                         Use your official government credentials

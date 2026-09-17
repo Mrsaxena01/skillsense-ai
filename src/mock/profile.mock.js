@@ -1,5 +1,6 @@
 
-const {name , email} = localStorage.getItem("app_user") ? JSON.parse(localStorage.getItem("app_user")) : {name: "Ankit Kumar", email: "ankit.kumar@gov.in"};
+const {name , email} = localStorage.getItem("app_user") ? JSON.parse(localStorage.getItem("app_user")) : {name: "Sonu Kumar", email: "Sonu.kumar@gov.in"};
+
 
 
 
@@ -7,8 +8,8 @@ export const employeeProfile = {
     id: 'EMP001',
 
     personal: {
-        name: name || 'Ankit Kumar',
-        email: email || 'ankit.kumar@gov.in',
+        name: name || 'Sonu Kumar',
+        email: email || 'Sonu.kumar@gov.in',
         phone: '+91 98765 43210',
         avatar: null,
     },
