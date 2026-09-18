@@ -40,10 +40,10 @@ const assessmentTypeOptions = [
 ];
 
 const Assessments = () => {
-    const [noOfQuestions, setNoOfQuestions] = useState(10);
-    const [level, setLevel] = useState('Easy');
+    const [noOfQuestions, setNoOfQuestions] = useState(5);
+    const [level, setLevel] = useState('Mixed');
     const [timeLimit, setTimeLimit] = useState(0); // 0 = no limit, minutes otherwise
-    const [assessmentType, setAssessmentType] = useState('practice');
+    const [assessmentType, setAssessmentType] = useState('competency'); // 'practice' or 'competency'
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [generating, setGenerating] = useState(false);
 
