@@ -25,6 +25,11 @@ export const employeeMenu = [
         label: 'My Profile',
     },
     {
+        key: '/employee/assessments',
+        icon: <FormOutlined />,
+        label: 'Assessments',
+    },
+    {
         key: '/employee/competencies',
         icon: <SafetyCertificateOutlined />,
         label: 'Competencies',
@@ -48,11 +53,6 @@ export const employeeMenu = [
         key: '/employee/ai-assistant',
         icon: <OpenAIOutlined />,
         label: 'AI Assistant',
-    },
-    {
-        key: '/employee/assessments',
-        icon: <FormOutlined />,
-        label: 'Assessments',
     },
 
     {
