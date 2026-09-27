@@ -39,7 +39,7 @@ const Login = () => {
 
     return (
         <div className="auth-container flex min-h-screen w-full select-none items-center justify-center bg-gray-50">
-            <div className="auth-left relative hidden h-screen w-1/2 flex-col justify-between overflow-hidden p-12 md:p-16 md:flex">
+            <div className="auth-left relative hidden min-h-screen w-1/2 flex-col justify-between overflow-hidden p-12 md:pb-30 md:p-16  md:flex">
                 <div className="absolute inset-0 z-0 bg-black/50" />
 
                 <div className="relative z-10 flex items-center gap-3">

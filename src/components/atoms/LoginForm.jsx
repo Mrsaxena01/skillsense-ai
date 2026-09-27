@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
 import {
     MailOutlined,
     LockOutlined,
@@ -20,38 +20,82 @@ const fieldStyle = {
 
 const LoginForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [form] = Form.useForm(); 
     const { notify } = useToast();
-    const {  isAuthenticated, loginWithCredentials, user } = useAuth();
+    const { isAuthenticated, loginWithCredentials, user } = useAuth();
     const navigate = useNavigate();
 
-     useEffect(() => {
-         if (isAuthenticated && user?.role) {
-             notify('Login successful!');
-             navigate(`/${user.role}/dashboard`, { replace: true });
-         }
-     }, [isAuthenticated, user, navigate, notify]);
+    useEffect(() => {
+        if (isAuthenticated && user?.role) {
+            notify('Login successful!');
+            navigate(`/${user.role}/dashboard`, { replace: true });
+        }
+    }, [isAuthenticated, user, navigate, notify]);
 
-     const onFinish = async (values) => {
-         setIsSubmitting(true);
-         const res = await loginWithCredentials(values.email, values.password);
+    const onFinish = async (values) => {
+        setIsSubmitting(true);
+        const res = await loginWithCredentials(values.email, values.password);
+        if (!res?.success) {
+            setIsSubmitting(false);
+            notify(res?.error || 'Invalid credentials. Please try again.');
+        }
+    };
 
-         if (!res?.success) {
-             setIsSubmitting(false);
-             notify(res?.error || 'Invalid credentials. Please try again.');
-         }
-     };
+    const handleRoleChange = (value) => {
+        if (value === 'employee') {
+            form.setFieldsValue({
+                email: 'sonu@gmail.com',
+                password: '123456789',
+            });
+        } else {
+            form.setFieldsValue({
+                email: 'admin@gmail.com',
+                password: '123456789', 
+            });
+        }
+    };
 
     return (
         <Form
+            form={form} // 3. Bind the form instance
             name="login-form"
             layout="vertical"
             className="w-full"
             onFinish={onFinish}
+            initialValues={{
+                role: 'employee', 
+                email: 'sonu@gmail.com', 
+                password: '123456789',
+            }}
         >
             <Form.Item
                 label={
                     <span className="text-sm font-medium text-gray-700">
-                        Official Email
+                        {' '}
+                        Role{' '}
+                    </span>
+                }
+                name="role"
+                validateTrigger="onSubmit"
+                rules={[{ required: true }]}
+            >
+                <Select
+                    className="w-full sm:w-64"
+                    options={[
+                        { value: 'employee', label: 'Employee' },
+                        { value: 'admin', label: 'Admin' },
+                    ]}
+                    style={fieldStyle}
+                    disabled={isSubmitting}
+                    onChange={handleRoleChange} 
+                />
+            </Form.Item>
+
+            <Form.Item
+                label={
+                    <span className="text-sm font-medium text-gray-700">
+                        {' '}
+                        Official Email{' '}
                     </span>
                 }
                 name="email"
@@ -67,19 +111,21 @@ const LoginForm = () => {
                     },
                 ]}
             >
+                {/* 8. Removed value and onChange, letting Ant Design handle state */}
                 <Input
                     autoComplete="off"
                     placeholder="Enter your official email"
                     prefix={<MailOutlined className="mr-1 text-gray-300" />}
                     style={fieldStyle}
-                    disabled={isSubmitting} // Prevent typing while logging in
+                    disabled={isSubmitting}
                 />
             </Form.Item>
 
             <Form.Item
                 label={
                     <span className="text-sm font-medium text-gray-700">
-                        Password
+                        {' '}
+                        Password{' '}
                     </span>
                 }
                 name="password"
@@ -89,15 +135,16 @@ const LoginForm = () => {
                     {
                         min: 8,
                         message: 'Password must be at least 8 characters long!',
-                    }
+                    },
                 ]}
                 hasFeedback
             >
+                {/* 9. Removed value and onChange */}
                 <Input.Password
                     placeholder="Enter your password"
                     prefix={<LockOutlined className="mr-1 text-gray-400" />}
                     style={fieldStyle}
-                    disabled={isSubmitting} // Prevent typing while logging in
+                    disabled={isSubmitting}
                 />
             </Form.Item>
 
@@ -114,8 +161,8 @@ const LoginForm = () => {
                 <Button
                     type="primary"
                     htmlType="submit"
-                    loading={isSubmitting} 
-                    disabled={isSubmitting} 
+                    loading={isSubmitting}
+                    disabled={isSubmitting}
                     style={{
                         width: '100%',
                         height: 'auto',
