@@ -10,7 +10,7 @@ const welcomeMessage = {
 };
 
 export function useAiAssistant() {
-    const context = useDashboard(); // reuses the same aggregated data as Dashboard
+    const { data, status } = useDashboard();
     const [messages, setMessages] = useState([welcomeMessage]);
     const [sending, setSending] = useState(false);
 
@@ -20,10 +20,23 @@ export function useAiAssistant() {
 
             const userMessage = { id: `u-${Date.now()}`, role: 'user', text };
             setMessages((prev) => [...prev, userMessage]);
+
+            if (!data) {
+                const reply =
+                    status === 'error'
+                        ? "I couldn't load your learning data. Please refresh and try again."
+                        : "I'm still loading your learning data. Please try again in a moment.";
+                setMessages((prev) => [
+                    ...prev,
+                    { id: `a-${Date.now()}`, role: 'assistant', text: reply },
+                ]);
+                return;
+            }
+
             setSending(true);
 
             try {
-                const reply = await getAssistantReply(text, context);
+                const reply = await getAssistantReply(text, data);
                 setMessages((prev) => [
                     ...prev,
                     { id: `a-${Date.now()}`, role: 'assistant', text: reply },
@@ -41,8 +54,8 @@ export function useAiAssistant() {
                 setSending(false);
             }
         },
-        [context]
+        [data, status]
     );
 
-    return { messages, sending, sendMessage, contextStatus: context.status };
+    return { messages, sending, sendMessage, contextStatus: status };
 }

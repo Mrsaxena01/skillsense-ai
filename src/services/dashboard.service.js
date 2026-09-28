@@ -1,4 +1,3 @@
-
 import { fetchCompetencies } from './competency.service';
 import { fetchSkillGaps } from './skillGap.service';
 import { fetchEnrolledCourses } from './learning.service';
@@ -73,10 +72,19 @@ export async function fetchDashboardData() {
 
     return {
         overallScore: s.overallScore,
+        competencySummary: {
+            overall: s.overallScore,
+            total: s.competencies.length,
+            strong: s.competencies.filter((c) => c.status === 'Meets').length,
+            gaps: s.gaps.length,
+        },
         domainSummary: s.domainSummary,
+        gaps: s.gaps,
         priorityGaps: s.gaps,
         learningProgress: s.learningProgress,
+        learningCompletion: s.learningProgress,
         activeCourse: s.activeCourse,
+        lastQuiz: s.lastQuiz,
         lastAssessmentScore: s.lastQuiz?.scorePercent ?? null,
         completedSkillsCount: s.competencies.filter((c) => c.status === 'Meets')
             .length,
